@@ -86,6 +86,12 @@ RUN groupadd --system zabbix && \
     mkdir -p /var/lib/php/ && \
     chown --quiet -R nginx:nginx /var/lib/php/ && \
     yum ${YUM_FLAGS_PERSISTENT} clean all && \
+    sed -i 's/override/#override/g' /etc/yum.conf && \
+    yum ${YUM_FLAGS_PERSISTENT} reinstall glibc-common && \
+    echo $'\n\
+    export LC_ALL=ru_RU.utf8\n\
+    \n'\
+    >> /root/.bashrc && \
     rm -rf /var/cache/yum/
 
 EXPOSE 80/TCP 443/TCP

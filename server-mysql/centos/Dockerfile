@@ -132,8 +132,22 @@ RUN groupadd --system zabbix && \
             openldap \
             openssl-libs \
             pcre \
+            wget \
+            git \
             unixODBC && \
     yum ${YUM_FLAGS_PERSISTENT} clean all && \
+    sed -i 's/override/#override/g' /etc/yum.conf && \
+    yum ${YUM_FLAGS_PERSISTENT} reinstall glibc-common && \
+    echo $'\n\
+    export LC_ALL=ru_RU.utf8\n\
+    \n'\
+    >> /root/.bashrc && \
+    cd /usr/src && wget https://bootstrap.pypa.io/get-pip.py && \
+    python get-pip.py && \
+    pip install requests && \
+    git clone https://github.com/ableev/Zabbix-in-Telegram.git && \
+    cd ./Zabbix-in-Telegram/ && \
+    pip install -r requirements.txt && \
     rm -rf /var/cache/yum/
 
 EXPOSE 10051/TCP
