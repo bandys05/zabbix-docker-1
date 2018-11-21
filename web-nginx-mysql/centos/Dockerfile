@@ -80,6 +80,9 @@ RUN groupadd --system zabbix && \
             php-mbstring \
             php-mysql \
             php-xml \
+            mc \
+            net-tools \
+            bind-utils \
             supervisor && \
     ln -s /usr/share/fonts/dejavu/DejaVuSans.ttf /usr/share/zabbix/fonts/graphfont.ttf && \
     rm -f /etc/php-fpm.d/www.conf && \

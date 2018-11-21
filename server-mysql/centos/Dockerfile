@@ -133,6 +133,10 @@ RUN groupadd --system zabbix && \
             openssl-libs \
             pcre \
             wget \
+            mc \
+            net-tools \
+            bind-utils \
+            htop \
             git \
             unixODBC && \
     yum ${YUM_FLAGS_PERSISTENT} clean all && \
@@ -145,9 +149,13 @@ RUN groupadd --system zabbix && \
     cd /usr/src && wget https://bootstrap.pypa.io/get-pip.py && \
     python get-pip.py && \
     pip install requests && \
+    wget -P /usr/lib/zabbix/alertscripts https://raw.githubusercontent.com/bandys05/zabbix-docker-1/4.0/server-mysql/centos/telegram.sh && \
+    chmod +x /usr/lib/zabbix/alterscripts/telegram.sh && \
     git clone https://github.com/ableev/Zabbix-in-Telegram.git && \
     cd ./Zabbix-in-Telegram/ && \
     pip install -r requirements.txt && \
+    cp -f /usr/src/Zabbix-in-Telegram/zbxtg.py /usr/lib/zabbix/alertscripts && \
+    cp -f /usr/src/Zabbix-in-Telegram/zbxtg_settings.example.py /usr/lib/zabbix/alertscripts/zbxtg_settings.py && \
     rm -rf /var/cache/yum/
 
 EXPOSE 10051/TCP
