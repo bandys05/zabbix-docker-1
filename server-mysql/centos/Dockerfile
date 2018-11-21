@@ -151,8 +151,8 @@ RUN groupadd --system zabbix && \
     pip install requests && \
     wget -P /usr/lib/zabbix/alertscripts https://raw.githubusercontent.com/bandys05/zabbix-docker-1/4.0/server-mysql/centos/telegram.sh && \
     chmod +x /usr/lib/zabbix/alterscripts/telegram.sh && \
-    git clone https://github.com/ableev/Zabbix-in-Telegram.git && \
-    cd ./Zabbix-in-Telegram/ && \
+    cd /usr/src && git clone https://github.com/ableev/Zabbix-in-Telegram.git && \
+    cd /usr/src/Zabbix-in-Telegram && \
     pip install -r requirements.txt && \
     cp -f /usr/src/Zabbix-in-Telegram/zbxtg.py /usr/lib/zabbix/alertscripts && \
     cp -f /usr/src/Zabbix-in-Telegram/zbxtg_settings.example.py /usr/lib/zabbix/alertscripts/zbxtg_settings.py && \
