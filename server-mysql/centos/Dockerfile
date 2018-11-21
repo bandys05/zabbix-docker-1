@@ -154,8 +154,6 @@ RUN groupadd --system zabbix && \
     cd /usr/src && git clone https://github.com/ableev/Zabbix-in-Telegram.git && \
     cd /usr/src/Zabbix-in-Telegram && \
     pip install -r requirements.txt && \
-    cp -f /usr/src/Zabbix-in-Telegram/zbxtg.py /usr/lib/zabbix/alertscripts && \
-    cp -f /usr/src/Zabbix-in-Telegram/zbxtg_settings.example.py /usr/lib/zabbix/alertscripts/zbxtg_settings.py && \
     rm -rf /var/cache/yum/
 
 EXPOSE 10051/TCP
