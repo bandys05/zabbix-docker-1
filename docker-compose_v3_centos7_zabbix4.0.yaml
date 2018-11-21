@@ -7,13 +7,13 @@ services:
   volumes:
    - /etc/localtime:/etc/localtime:ro
    - /etc/timezone:/etc/timezone:ro 
-   - /docker2/usr/lib/zabbix/alertscripts:/usr/lib/zabbix/alertscripts:ro
-   - /docker2/usr/lib/zabbix/externalscripts:/usr/lib/zabbix/externalscripts:ro
-   - /docker2/var/lib/zabbix/modules:/var/lib/zabbix/modules:ro
-   - /docker2/var/lib/zabbix/enc:/var/lib/zabbix/enc:ro
-   - /docker2/var/lib/zabbix/ssh_keys:/var/lib/zabbix/ssh_keys:ro
-   - /docker2/var/lib/zabbix/mibs:/var/lib/zabbix/mibs:ro
-   - /docker2/var/lib/zabbix/snmptraps:/var/lib/zabbix/snmptraps:ro
+   - /docker/usr/lib/zabbix/alertscripts:/usr/lib/zabbix/alertscripts:ro
+   - /docker/usr/lib/zabbix/externalscripts:/usr/lib/zabbix/externalscripts:ro
+   - /docker/var/lib/zabbix/modules:/var/lib/zabbix/modules:ro
+   - /docker/var/lib/zabbix/enc:/var/lib/zabbix/enc:ro
+   - /docker/var/lib/zabbix/ssh_keys:/var/lib/zabbix/ssh_keys:ro
+   - /docker/var/lib/zabbix/mibs:/var/lib/zabbix/mibs:ro
+   - /docker/var/lib/zabbix/snmptraps:/var/lib/zabbix/snmptraps:ro
   links:
    - mysql-server:mysql-server
    - zabbix-java-gateway:zabbix-java-gateway
@@ -74,7 +74,7 @@ services:
   volumes:
    - /etc/localtime:/etc/localtime:ro
    - /etc/timezone:/etc/timezone:ro
-   - /docker2/etc/ssl/nginx:/etc/ssl/nginx:ro
+   - /docker/etc/ssl/nginx:/etc/ssl/nginx:ro
   deploy:
    resources:
     limits:
@@ -146,7 +146,7 @@ services:
   ports:
    - "162:162/udp"
   volumes:
-   - /docker2/var/lib/zabbix/snmptraps:/var/lib/zabbix/snmptraps:rw
+   - /docker/var/lib/zabbix/snmptraps:/var/lib/zabbix/snmptraps:rw
   deploy:
    resources:
     limits:
@@ -172,7 +172,7 @@ services:
   image: mysql:5.7
   command: [mysqld, --character-set-server=utf8, --collation-server=utf8_bin]
   volumes:
-   - /docker2/var/lib/mysql:/var/lib/mysql:rw
+   - /docker/var/lib/mysql:/var/lib/mysql:rw
   env_file:
    - .env_db_mysql
   user: root
@@ -187,7 +187,7 @@ services:
  db_data_mysql:
   image: busybox
   volumes:
-   - /docker2/var/lib/mysql:/var/lib/mysql:rw
+   - /docker/var/lib/mysql:/var/lib/mysql:rw
 
 # elasticsearch:
 #  image: elasticsearch
