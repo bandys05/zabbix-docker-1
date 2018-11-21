@@ -149,11 +149,10 @@ RUN groupadd --system zabbix && \
     cd /usr/src && wget https://bootstrap.pypa.io/get-pip.py && \
     python get-pip.py && \
     pip install requests && \
-    wget -P /usr/lib/zabbix/alertscripts https://raw.githubusercontent.com/bandys05/zabbix-docker-1/4.0/server-mysql/centos/telegram.sh && \
-    chmod +x /usr/lib/zabbix/alterscripts/telegram.sh && \
+    cd /usr/src && wget https://raw.githubusercontent.com/bandys05/zabbix-docker-1/4.0/server-mysql/centos/telegram.sh && \
+    chmod +x /usr/src/telegram.sh && \
     cd /usr/src && git clone https://github.com/ableev/Zabbix-in-Telegram.git && \
-    cd /usr/src/Zabbix-in-Telegram && \
-    pip install -r requirements.txt && \
+    cd /usr/src/Zabbix-in-Telegram && pip install -r requirements.txt && \
     rm -rf /var/cache/yum/
 
 EXPOSE 10051/TCP
