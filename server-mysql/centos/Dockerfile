@@ -127,6 +127,7 @@ RUN groupadd --system zabbix && \
             libevent \
             libxml2 \
             mariadb \
+            postgresql \
             net-snmp-libs \
             OpenIPMI-libs \
             openldap \
