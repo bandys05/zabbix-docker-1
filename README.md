@@ -15,7 +15,7 @@
 Порядок установки.
 1. Скачиваем к себе файлы репозитория и переходим в эту папку.
 2. Запустить docker-compose следующей командой
-docker-compose -f ./docker-compose_v3_centos7_zabbix4.0.yaml up -d
+docker-compose -f ./docker-compose.yaml up -d
 3. Через несколько минут zabbix сервер полностью готов к использованию.
 
 Для работы телеграма можно настраивать вот по этой статье https://serveradmin.ru/nastroyka-opoveshheniy-zabbix-v-telegram/ без применения настроек системы.
